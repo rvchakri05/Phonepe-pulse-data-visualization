@@ -99,10 +99,15 @@ if sl.session_state["All_data"]==data_types[0]:
     with char:
         sl.write(f'<p style= "color:#6A006A; font-size:20px; font-weight:Bold; text-align: center;">{lable}</p>',unsafe_allow_html=True)
         colum=data.columns
-        fig2=pt.bar(data,x=colum[0],y=str(colum[2]))
-        fig2.update_layout(yaxis=dict(tickformat=',d'),height=400,xaxis_type="category")
-        #fig2.update_traces(texttemplate='%{y}<br>lakhs', textposition='outside',hovertemplate='<b>%{x}</b><br>Total Transaction Amount: ₹%{y} lakhs')
-        sl.plotly_chart(fig2,use_container_width=True)
+        s_d_p=colum[0]
+        total_am=colum[2]
+        total_tra=colum[1]
+        fig=pt.treemap(data,path=[s_d_p,"Total_Amount"],values=total_am,color=s_d_p)
+        fig.update_layout(
+                title='Treemap of Transaction Amount by State and Year',
+                margin=dict(t=50, l=25, r=25, b=25)
+                    )
+        sl.plotly_chart(fig,use_container_width=True)
         
     sl.write('<p style= "color:#6A006A; font-size:35px; font-weight:Bold; text-align: center;">Transaction Based on State</p>',unsafe_allow_html=True)
     col1,col2=sl.columns([1,1])
@@ -162,10 +167,14 @@ if sl.session_state["All_data"]==data_types[1]:
     with char:
         sl.write(f'<p style= "color:#6A006A; font-size:20px; font-weight:Bold; text-align: center;">{lable}</p>',unsafe_allow_html=True)
         colum=data.columns
-        fig2=pt.bar(data,x=colum[0],y=colum[1])
-        fig2.update_layout(yaxis=dict(tickformat=',d'),height=400,xaxis_type="category")
-        #fig2.update_traces(texttemplate='%{y}<br>lakhs',hovertemplate='<b>%{}</b><br>Total Transaction Amount: ₹%{y} lakhs')
-        sl.plotly_chart(fig2,use_container_width=True)
+        s_d_p=colum[0]
+        total_tra=colum[1]
+        fig=pt.treemap(data,path=[s_d_p,"Total_Users"],values=total_tra,color=s_d_p)
+        fig.update_layout(
+                title='Treemap of Transaction Amount by State and Year',
+                margin=dict(t=50, l=25, r=25, b=25)
+                    )
+        sl.plotly_chart(fig,use_container_width=True)
         
     sl.write('<p style= "color:#6A006A; font-size:35px; font-weight:Bold; text-align: center;">Device Based Users</p>',unsafe_allow_html=True)
     col1,col2=sl.columns([1,1])
@@ -224,8 +233,12 @@ if sl.session_state["All_data"]==data_types[2]:
     with char:
         sl.write(f'<p style= "color:#6A006A; font-size:20px; font-weight:Bold; text-align: center;">{lable}</p>',unsafe_allow_html=True)
         colum=data.columns
-        fig2=pt.bar(data,x=colum[0],y=str(colum[2]))
-        fig2.update_layout(yaxis=dict(tickformat=',d'),height=400,xaxis_type="category")
-        #fig2.update_traces(texttemplate='%{y}<br>lakhs', textposition='outside',hovertemplate='<b>%{x}</b><br>Total Transaction Amount: ₹%{y} lakhs')
-        sl.plotly_chart(fig2,use_container_width=True)
-        
+        s_d_p=colum[0]
+        total_am=colum[2]
+        total_tra=colum[1]
+        fig=pt.treemap(data,path=[s_d_p,"Total_Amount"],values=total_am,color=s_d_p)
+        fig.update_layout(
+                title='Treemap of Transaction Amount by State and Year',
+                margin=dict(t=50, l=25, r=25, b=25)
+                    )
+        sl.plotly_chart(fig,use_container_width=True)
